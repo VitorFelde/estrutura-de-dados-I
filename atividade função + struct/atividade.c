@@ -38,6 +38,7 @@ O programa deve oferecer as seguintes opções ao usuário:
 Postar arquivo com o código fonte em C.*/
 
 #include <stdio.h>
+#include <string.h>
 
 	typedef struct {
 
@@ -49,24 +50,72 @@ Postar arquivo com o código fonte em C.*/
 }Alunos;
 
 
-void cadastrar(Alunos lista_turma[], int numerodealunos) {
+void inserir(Alunos lista_turma[], int numerodealunos) {
     for (int i = 0; i < numerodealunos; i++) {
         while (getchar() != '\n'); //limpezinha de buffer lendária
         
-        printf ("Digite o nome do funcionário: ");
-        fgets(inserir[i].nome, sizeof(inserir[i].nome), stdin);    
-        inserir[i].nome[strcspn(inserir[i].nome, "\n")] = '\0';
+        printf ("Digite o nome do aluno: ");
+        fgets(lista_turma[i].nome, sizeof(lista_turma[i].nome), stdin);    
+       lista_turma[i].nome[strcspn(lista_turma[i].nome, "\n")] = '\0';
         printf ("Digite o número de matricula: ");
-        scanf ("%d", &inserir[i].matricula);
+        scanf ("%d", &lista_turma[i].matricula);
         printf ("Digite a quantidade de faltas: ");
-        scanf ("%f", &inserir[i].falta);
+        scanf ("%d", &lista_turma[i].falta);
         printf ("Digite a primeira nota: ");
-        scanf ("%d", &inserir[i].p1);
+        scanf ("%f", &lista_turma[i].p1);
         printf ("Digite a segundo nota: ");
-        scanf ("%d", &inserir[i].p2);
+        scanf ("%f", &lista_turma[i].p2);
         while (getchar() != '\n');
-	
+        
+    }	
+}
 
-int main (){
-	
+void exibir(Alunos lista_turma[], int numerodealunos) {
+    
+    for (int i = 0; i < numerodealunos; i++) {
+    
+        printf ("\nNome do aluno do cadastro %d: %s ", i, lista_turma[i].nome);
+        printf ("\nMatricula do aluno %d: %d", i, lista_turma[i].matricula);
+        printf ("\nQuantidade de faltas do aluno %d: %d", i, lista_turma[i].falta);
+        printf ("\nPrimeira nota do aluno %d: %f", i, lista_turma[i].p1);
+        printf ("\nSegunda nota do aluno %d: %f", i, lista_turma[i].p2);
+    }
+    
+}
+
+void salvar (Alunos lista_turma[], int numerodealunos){
+    
+    FILE *arquivo = fopen("turma.txt", "w");
+    
+    if (arquivo == NULL) { //verificação de segurança, está no slide, se o arquivo for null, nao podera salvar infos
+        printf("Erro ao criar o arquivo!\n");
+        return;
+    }
+    
+    for (int i = 0; i < numerodealunos; i++) {
+        
+        // Aqui dentro você usa o fprintf apontando para a variável 'arquivo'
+        fprintf(arquivo, "%s\n", lista_turma[i].nome);
+        fprintf(arquivo, "%d\n", lista_turma[i].matricula);
+        fprintf(arquivo, "%d\n", lista_turma[i].falta);
+        fprintf(arquivo, "%.2f\n", lista_turma[i].p1);
+        fprintf(arquivo, "%.2f\n", lista_turma[i].p2);
+        fprintf(arquivo, "%.2f\n", lista_turma[i].media);
+        fprintf(arquivo, "%s\n", lista_turma[i].situacao);
+        //aqui salvamos os valores dentro da variavel arquivo que criamos anteriormente
+    }
+    
+    fclose(arquivo); //fechando o arquivo após ter as informações salvas
+    
+    printf("Todos os alunos foram salvos com sucesso!\n"); //mensagemzinha de confirmação de cadastro
+    
+}
+
+void carregar (Alunos lista_turma[], int numerodealunos){
+    
+}
+
+int main ()
+{
+	return 0;
 	}
