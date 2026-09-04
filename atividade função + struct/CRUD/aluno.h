@@ -1,7 +1,7 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 
-#define ARQUIVO_ALUNOS "alunos.bin"
+//esses dois comandos servem como segurança para evitar que algum dos outros arquivos abra esse aluno.h duas vezes
 
 typedef struct {
     int id;
@@ -13,3 +13,4 @@ typedef struct {
 } Alunos;
 
 #endif
+//fechando a verificação fera demais 
