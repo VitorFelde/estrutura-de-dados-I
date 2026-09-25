@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <string.h>
+#include <ctype.h>
 
 /*Faça um programa que  implementa uma lista com vetores de strings, conforme o exemplo visto em sala, com as seguintes operações:
 
@@ -51,10 +52,10 @@ void retirarElemento(tpLista lista, char *item2){
     }
 }
 
-void criaLista(tpLista l){ //aqui estamos criando a lista vazia para poder estar iniciando wessa lista
+void criaLista(tpLista listatop){ //aqui estamos criando a lista vazia para poder estar iniciando wessa lista
     int i;
-    for (i=0; i<MaxItens; i++) {
-        l[i][0] = '\0';
+    for (i = 0; i < MaxItens; i++) { //enquanto for menor que o tamanho maximo que criamos
+        listatop[i][0] = '\0'; //criamos o numero de itens possiveis, e com 
     }
 }
 
@@ -68,7 +69,7 @@ void contarElementos(tpLista contador){
 }
 
 void exibirLista(tpLista exibir){
-    int i, j;
+    int i; 	
     for (i = 0; i < MaxItens && strlen(exibir[i])>0; i++) {
         printf ("%s\n", exibir[i]);
     }
@@ -77,7 +78,7 @@ void exibirLista(tpLista exibir){
 int main() {
 	tpLista listaTop;
     
-    criaLista (listaTop);
+    criaLista(listaTop);
 	
 	int op = 1;
 	
@@ -97,18 +98,36 @@ int main() {
     	case 1: 
     	    char novoItem[TamItem]; //criando uma string para que o usuario possa digitar o item que quer add
                 
+                int k;
+                
                 printf("Digite o elemento que deseja inserir: ");
                 scanf("%s", novoItem);
                 
-                inserirElemento(listaTop, novoItem);
+                if (strlen(novoItem) > 20) {
+					printf ("\nVoce nao pode inserir um item com mais de 20 caracteres\n");
+				}
+				
+				else { //professor, tentei criar uma função la em cima pra poder fazer isso, mas fui incapaz 
+					//de fazer isso, e não queria usar IA pra manter o codigo fera                
+					for(k = 0; novoItem[k] != '\0'; k++) {
+						novoItem[k] = toupper(novoItem[k]);	
+					}
+					
+					inserirElemento(listaTop, novoItem);
+			}
     	break;	
     	
     	case 2: 
     	    char itemRemove[TamItem];
-    	    
+    	    int t;
+    	        	    
     	    printf ("Digite o elemento que deseja remover: ");
     	    scanf ("%s", itemRemove);
     	
+			for(t = 0; itemRemove[t] != '\0'; t++) {
+				itemRemove[t] = toupper(itemRemove[t]);	
+			}
+
     		retirarElemento(listaTop, itemRemove);
     	break;	
     	
@@ -124,6 +143,9 @@ int main() {
     		printf ("Saindo do programa");
     	break;
     	
+    	default: 
+			printf ("\nDigite uma das opções válidas\n");
+		break;
 	    }
 	}
 	while (op != 5);
