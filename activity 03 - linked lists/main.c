@@ -21,13 +21,14 @@ O programa deve oferecer ao usuário as operações:
 int main (){
 
     int op;
-
-    printf ("Escolha uma das opções abaixo:\n");
+    do {
+    printf ("\nEscolha uma das opções abaixo:\n");
     printf ("1) Inserir elemento na lista\n");
     printf ("2) Retirar elemento da lista\n");
     printf ("3) Buscar elemento na lista\n");
     printf ("4) Imprimir elementos da lista\n");
     printf ("5) Contar os elementos da lista\n");
+    printf ("6) Sair do programa\n");
     printf ("\nEscolha: ");
     scanf ("%d", &op);
 
@@ -52,7 +53,17 @@ int main (){
         case 5: 
             //contarElementos();
         break;
+
+        case 6: 
+            printf ("Saindo do programa");
+        break;
+
+        default: 
+            printf ("\nOpção inválida, escolha entre 1 e 6\n");
+        break;
+    }
     }
 
+    while (op != 6);
 
 }
