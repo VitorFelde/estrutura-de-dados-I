@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 /*Implementar um programa que gerencia uma lista encadeada ordenada com alocação dinâmica.
 
 Cada elemento da lista deve conter um número inteiro.
@@ -17,6 +17,23 @@ O programa deve oferecer ao usuário as operações:
 - Imprimir o conteúdo da lista;
 
 - Contar o número de elementos da lista.*/
+
+#define MaxItens 10
+#define TamItem 20
+typedef char tpLista[MaxItens][TamItem];
+
+
+
+
+
+void criarLista () {
+
+}
+
+void inserirElemento (tpLista lista, char *item2) {
+
+}
+
 
 int main (){
 
