@@ -20,7 +20,7 @@ struct elemento {
 
 typedef struct elemento *Lista; //Lista is a pointer to a node so we can access the list through its first node
 
-Lista criarLista() { //here creating a null list so now the user can add things of the type lista we defined up there
+Lista criarLista() { //the list starts empty because it doesnt have a first node yet
     return NULL;
 }
 
