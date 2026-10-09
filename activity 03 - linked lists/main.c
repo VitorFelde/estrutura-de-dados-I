@@ -106,7 +106,7 @@ Lista buscarElemento(Lista l, int e) { //search for e and return the node if it 
 void imprimirElementos(Lista l) {
     Lista p;
 
-    p = l;
+    p = l; //use p to move through the list without changing l
 
     if (p == NULL) {
         printf("Lista vazia.\n");
@@ -117,7 +117,7 @@ void imprimirElementos(Lista l) {
 
     while (p != NULL) {
         printf("%d ", p->dado);
-        p = p->prox;
+        p = p->prox; //move to the next node
     }
 
     printf("\n");
@@ -128,11 +128,11 @@ int contarElementos(Lista l) {
     int cont;
 
     p = l;
-    cont = 0;
+    cont = 0; //we havent visited any nodes yet
 
     while (p != NULL) {
-        cont++;
-        p = p->prox;
+        cont++; //count the current node
+        p = p->prox; //move forward so we dont count the same node twice
     }
 
     return cont;
