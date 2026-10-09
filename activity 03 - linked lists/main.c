@@ -16,9 +16,12 @@ Contar o número de elementos da lista.*/
 struct elemento {
     int dado;
     struct elemento *prox;
+    //here its a pointer cause we will need the memory adress of the next element inside our node
 };
 
-typedef struct elemento *Lista;
+typedef struct elemento *Lista; //now lista is a pointer to our struct
+//and its a pointer because our nodes doesnt have a name, so we need to call them or find them
+//by their address in the memory
 
 Lista criarLista(void) {
     return NULL;
