@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //so we can put malloc and free
 
 /*Implementar um programa que gerencia uma lista encadeada ordenada com alocação dinâmica.
 Cada elemento da lista deve conter um número inteiro. 
