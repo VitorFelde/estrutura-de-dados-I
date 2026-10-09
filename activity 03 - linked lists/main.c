@@ -28,7 +28,7 @@ Lista inserirElemento(Lista l, int e) { //l is the first node and e is the numbe
     Lista p, ant, novo;
 
     //sizeof gets the size of one node and malloc reserves that much memory
-    novo = malloc(sizeof(struct elemento));
+    novo =malloc(sizeof(struct elemento));
 
     if (novo == NULL) { //if memory allocation fails we cant use the new node
         printf("Erro ao alocar memoria\n");
@@ -42,7 +42,7 @@ Lista inserirElemento(Lista l, int e) { //l is the first node and e is the numbe
     ant = p; //ant keeps track of the previous node
 
     //keep moving while the current number is smaller than e
-    while ((p != NULL) && (p->dado < e)) {
+    while ((p != NULL)&&(p->dado < e)) {
         ant = p; //save the current node before moving forward
         p = p->prox; //move to the next node
     }
@@ -109,7 +109,7 @@ void imprimirElementos(Lista l) {
     p = l; //use p to move through the list without changing l
 
     if (p == NULL) {
-        printf("Lista vazia.\n");
+        printf("Lista vazia\n");
         return;
     }
 
@@ -156,7 +156,7 @@ int main(void) {
         printf("\nEscolha: ");
 
         if (scanf("%d", &op) != 1) {
-            printf("Entrada invalida.\n");
+            printf("Entrada invalida\n");
             break;
         }
 
@@ -164,19 +164,19 @@ int main(void) {
             case 1:
                 printf("Digite o numero que deseja inserir: ");
                 if (scanf("%d", &e) != 1) {
-                    printf("Entrada invalida.\n");
+                    printf("Entrada invalida\n");
                     return 1;
                 }
 
                 //save the returned list because the first node might change
                 lista = inserirElemento(lista, e);
-                printf("Elemento inserido.\n");
+                printf("Elemento inserido\n");
                 break;
 
             case 2:
                 printf("Digite o numero que deseja retirar: ");
                 if (scanf("%d", &e) != 1) {
-                    printf("Entrada invalida.\n");
+                    printf("Entrada invalid\n");
                     return 1;
                 }
 
@@ -185,16 +185,16 @@ int main(void) {
 
                 if (resultado != NULL) {
                     lista = retirarElemento(lista, e);
-                    printf("Elemento retirado.\n");
+                    printf("Elemento retirado\n");
                 } else {
-                    printf("Elemento nao encontrado.\n");
+                    printf("Elemento nao encontrado\n");
                 }
                 break;
 
             case 3:
                 printf("Digite o numero que deseja buscar: ");
                 if (scanf("%d", &e) != 1) {
-                    printf("Entrada invalida.\n");
+                    printf("Entrada ivalida\n");
                     return 1;
                 }
 
@@ -202,8 +202,7 @@ int main(void) {
 
                 if (resultado != NULL) {
                     //%p prints a memory address and resultado holds the node address
-                    printf("Elemento encontrado no endereco: %p\n",
-                           (void *)resultado);
+                    printf("Elemento encontrado no endereco: %p\n",(void *)resultado);
                 } else {
                     printf("Elemento nao encontrado. Endereco: NULL\n");
                 }
@@ -219,11 +218,11 @@ int main(void) {
                 break;
 
             case 6:
-                printf("Saindo do programa.\n");
+                printf("Saindo do programa");
                 break;
 
             default:
-                printf("Opcao invalida. Escolha entre 1 e 6.\n");
+                printf("opcao invalida. Escolha entre 1 e 6\n");
                 break;
         }
 
