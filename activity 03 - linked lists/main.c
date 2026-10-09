@@ -24,33 +24,40 @@ Lista criarLista() { //the list starts empty because it doesnt have a first node
     return NULL;
 }
 
-Lista inserirElemento(Lista l, int e) { //here we pass a parameter of the type list, so we can have a control of
-    //where in the memory we are, to insert, right after the position
+Lista inserirElemento(Lista l, int e) { //l is the first node and e is the number we want to insert
     Lista p, ant, novo;
 
-    novo = malloc(sizeof(struct elemento)); //here we are setting the space on memory to us allocate our new element
+    //sizeof gets the size of one node and malloc reserves that much memory
+    novo = malloc(sizeof(struct elemento));
 
-    if (novo == NULL) { //if the space in memory were trying to allocate is null return this error
+    if (novo == NULL) { //if memory allocation fails we cant use the new node
         printf("Erro ao alocar memoria\n");
         return l;
     }
 
-    novo->dado = e; //it stores a number for our node
+    novo->dado = e; //-> lets us access a field through a pointer
+    //this is the same as (*novo).dado
 
-    p = l; //putting 
-    ant = p;
+    p = l; //p moves through the list to find where e belongs
+    ant = p; //ant keeps track of the previous node
 
+    //keep moving while the current number is smaller than e
     while ((p != NULL) && (p->dado < e)) {
-        ant = p;
-        p = p->prox;
+        ant = p; //save the current node before moving forward
+        p = p->prox; //move to the next node
     }
 
     if (p != ant) {
+        //p moved forward so the new node goes after ant
         ant->prox = novo;
     } else {
+        //p didnt move so the new node belongs at the beginning
+        //this happens if the list is empty or e is the smallest number
         l = novo;
     }
 
+    //the new node points to the node that comes after it
+    //if p is NULL then the new node becomes the last one
     novo->prox = p;
 
     return l;
