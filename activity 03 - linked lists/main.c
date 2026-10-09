@@ -23,17 +23,17 @@ typedef struct elemento *Lista; //now lista is a pointer to our struct
 //and its a pointer because our nodes doesnt have a name, so we need to call them or find them
 //by their address in the memory
 
-Lista criarLista(void) {
+Lista criarLista(void) { //here creating a null list so now the user can add things of the type lista we defined up there
     return NULL;
 }
 
-Lista inserirElemento(Lista l, int e) {
+Lista inserirElemento(Lista l, int e) { 
     Lista p, ant, novo;
 
     novo = malloc(sizeof(struct elemento));
 
     if (novo == NULL) {
-        printf("Erro ao alocar memoria.\n");
+        printf("Erro ao alocar memoria\n");
         return l;
     }
 
