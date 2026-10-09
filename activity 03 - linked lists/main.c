@@ -63,28 +63,30 @@ Lista inserirElemento(Lista l, int e) { //l is the first node and e is the numbe
     return l;
 }
 
-Lista retirarElemento(Lista l, int e) {
+Lista retirarElemento(Lista l, int e) { //l is the list and e is the number we want to remove
     Lista p, ant;
 
-    p = l;
-    ant = NULL;
+    p = l; //p searches for the node we want to remove
+    ant = NULL; //there is no previous node at the start
 
     while ((p != NULL) && (p->dado != e)) {
-        ant = p;
+        ant = p; //save the current node before moving forward
         p = p->prox;
     }
 
-    if (p != NULL) {
+    if (p != NULL) { //p is valid so we found the number
         if (ant == NULL) {
+            //the first node is being removed so the next node becomes first
             l = p->prox;
         } else {
+            //skip p by connecting the previous node to the next one
             ant->prox = p->prox;
         }
 
-        free(p);
+        free(p); //release the memory used by the removed node
     }
 
-    return l;
+    return l; //the first node may have changed
 }
 
 Lista buscarElemento(Lista l, int e) {
