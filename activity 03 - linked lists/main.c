@@ -202,9 +202,9 @@ int main(void) {
 
                 if (resultado != NULL) {
                     //%p prints a memory address and resultado holds the node address
-                    printf("Elemento encontrado no endereco: %p\n",(void *)resultado);
+                    printf("Elemento encontrado no endereco:%p",(void *)resultado);
                 } else {
-                    printf("Elemento nao encontrado. Endereco: NULL\n");
+                    printf("Elemento nao encontrado\n");
                 }
                 break;
 
