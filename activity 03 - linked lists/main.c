@@ -143,7 +143,7 @@ int main(void) {
     Lista resultado;
     int op, e;
 
-    lista = criarLista();
+    lista = criarLista(); //start with an empty list
 
     do {
         printf("\nEscolha uma das opcoes abaixo:\n");
@@ -168,6 +168,7 @@ int main(void) {
                     return 1;
                 }
 
+                //save the returned list because the first node might change
                 lista = inserirElemento(lista, e);
                 printf("Elemento inserido.\n");
                 break;
@@ -179,6 +180,7 @@ int main(void) {
                     return 1;
                 }
 
+                //check if the number exists before trying to remove it
                 resultado = buscarElemento(lista, e);
 
                 if (resultado != NULL) {
@@ -199,6 +201,7 @@ int main(void) {
                 resultado = buscarElemento(lista, e);
 
                 if (resultado != NULL) {
+                    //%p prints a memory address and resultado holds the node address
                     printf("Elemento encontrado no endereco: %p\n",
                            (void *)resultado);
                 } else {
@@ -224,7 +227,7 @@ int main(void) {
                 break;
         }
 
-    } while (op != 6);
+    } while (op != 6); //keep showing the menu until the user chooses 6
 
     return 0;
 }
