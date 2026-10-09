@@ -23,23 +23,24 @@ typedef struct elemento *Lista; //now lista is a pointer to our struct
 //and its a pointer because our nodes doesnt have a name, so we need to call them or find them
 //by their address in the memory
 
-Lista criarLista(void) { //here creating a null list so now the user can add things of the type lista we defined up there
+Lista criarLista() { //here creating a null list so now the user can add things of the type lista we defined up there
     return NULL;
 }
 
-Lista inserirElemento(Lista l, int e) { 
+Lista inserirElemento(Lista l, int e) { //here we pass a parameter of the type list, so we can have a control of
+    //where in the memory we are, to insert, right after the position
     Lista p, ant, novo;
 
-    novo = malloc(sizeof(struct elemento));
+    novo = malloc(sizeof(struct elemento)); //here we are setting the space on memory to us allocate our new element
 
-    if (novo == NULL) {
+    if (novo == NULL) { //if the space in memory were trying to allocate is null return this error
         printf("Erro ao alocar memoria\n");
         return l;
     }
 
-    novo->dado = e;
+    novo->dado = e; //it stores a number for our node
 
-    p = l;
+    p = l; //putting 
     ant = p;
 
     while ((p != NULL) && (p->dado < e)) {
