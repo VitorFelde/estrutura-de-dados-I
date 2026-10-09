@@ -89,15 +89,17 @@ Lista retirarElemento(Lista l, int e) { //l is the list and e is the number we w
     return l; //the first node may have changed
 }
 
-Lista buscarElemento(Lista l, int e) {
+Lista buscarElemento(Lista l, int e) { //search for e and return the node if it exists
     Lista p;
 
-    p = l;
+    p = l; //start at the first node
 
     while ((p != NULL) && (p->dado != e)) {
-        p = p->prox;
+        p = p->prox; //keep moving until we find e or reach the end
     }
 
+    //p holds the node address if we found e
+    //otherwise p is NULL
     return p;
 }
 
