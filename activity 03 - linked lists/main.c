@@ -15,13 +15,10 @@ Contar o número de elementos da lista.*/
 
 struct elemento {
     int dado;
-    struct elemento *prox;
-    //here its a pointer cause we will need the memory adress of the next element inside our node
+    struct elemento *prox; //points to the next node in the list
 };
 
-typedef struct elemento *Lista; //now lista is a pointer to our struct
-//and its a pointer because our nodes doesnt have a name, so we need to call them or find them
-//by their address in the memory
+typedef struct elemento *Lista; //Lista is a pointer to a node so we can access the list through its first node
 
 Lista criarLista() { //here creating a null list so now the user can add things of the type lista we defined up there
     return NULL;
