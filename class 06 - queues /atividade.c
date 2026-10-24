@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*Faça um programa que implemente uma fila com alocação dinâmica, para armazenar números inteiros.
 
@@ -16,8 +17,6 @@ Deve ser postado o código fonte em C, compilável e funcionando, sem o uso de b
 
 #define TRUE 1
 #define FALSE 0
-
-
 
 struct elemento {
     int dado;
@@ -86,8 +85,68 @@ Fila retirarFila(Fila f, int *e) {
     }
     else {
         *e = -1;
-        printf ("Fila vazia");
+        printf ("\nFila vazia\n");
     }
-
+    return (f);
 }
 
+void mostrarFila(Fila f){ //void because it doesnt return, it just prints
+
+    ApElemento ap;
+    
+    ap = f.ini;
+    
+    while (ap != NULL) {
+        printf ("%d - ", ap->dado); //showing the data store on ap
+        ap = ap->prox; //thats like incrementing 
+    }
+    printf ("\n");
+}
+
+int main (){
+    
+    Fila fila1 = criarFila();
+    int novo;
+    
+    int op;
+    
+    do {
+    printf ("\nDigite a opção que deseja: \n");
+    printf ("1) Inserir elemento na fila\n");
+    printf ("2) Remover elemento da fila\n");
+    printf ("3) Mostrar fila\n");
+    printf ("4) Sair do programa\n");
+    printf ("\nEscolha: ");
+    scanf ("%d", &op);
+    
+        switch (op) {
+            
+            case 1:
+                printf ("\nDigite o numero a ser inserido: ");
+                scanf ("%d", &novo);
+                fila1 = inserirFila(fila1, novo);
+            break;
+            
+            case 2:
+            if (filaVazia(fila1) == 0){
+                printf ("\nPrimeiro elemento removido\n");
+                fila1 = retirarFila(fila1, &novo);
+            } else {
+                printf ("\nFila vazia\n");
+            }
+            break;
+            
+            case 3:
+                if (filaVazia(fila1) == 0){
+                mostrarFila(fila1);
+            } else {
+                printf ("\nFila vazia\n");
+            }
+            break;
+            
+            case 4:
+                printf ("Saindo do programa");
+            break;
+        }
+    } while (op != 4);
+}
