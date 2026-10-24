@@ -67,5 +67,27 @@ Fila inserirFila(Fila f, int e) {
             f.fim = novo;
         }
         return (f);
-    
 }
+
+Fila retirarFila(Fila f, int *e) {
+
+    ApElemento ap;
+
+    if (! filaVazia(f)) {
+        *e=f.ini->dado; //basically we're passing the value of the dado at beggining to the pointer e
+        ap = f.ini;
+
+        f.ini = f.ini->prox;
+        free(ap);
+
+        if (filaVazia(f)) {
+            f.fim = NULL;
+        }
+    }
+    else {
+        *e = -1;
+        printf ("Fila vazia");
+    }
+
+}
+
