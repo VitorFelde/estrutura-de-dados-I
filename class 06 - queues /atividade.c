@@ -145,7 +145,11 @@ int main (){
             break;
             
             case 4:
-                printf ("Saindo do programa");
+                printf ("\nSaindo do programa\n");
+            break;
+            
+            default:
+                printf ("\nDigite uma opção válida\n");
             break;
         }
     } while (op != 4);
